@@ -4,20 +4,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Welcome extends CI_Controller {
 
 
-	public Welcome(){
-		$this->load->library('session');
-		$this->seesion->set_userdata('key','value');
-	}
 
 	public function index()
 	{
-		$this->load->view('welcome_message');
-			}
-
+		$this->load->library('session');
+		$this->session->set_userdata('key','value');
+		$this->load->view('session_view');
+	}
 	public function testing(){
-		echo "Testing";
-		$value = $this->session->userdata('key');
-		echo $value;
+		//loading session library
+		$this->load->library('session');
+		
+	 //removing session data 
+	 $this->session->unset_userdata('key'); 
+	 $this->load->view('session_view'); 
 	}
 }
 ?>
